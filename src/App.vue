@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <content-layout>
+      <header-layout>
+        <header-content></header-content>
+      </header-layout>
+      <body-page></body-page>
+    </content-layout>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import ContentLayout from "@/components/ContentLayout.vue";
+import HeaderContent from "@/components/HeaderContent.vue";
+import HeaderLayout from "@/components/HeaderLayout.vue";
+import BodyPage from "@/components/BodyPage.vue";
 
 export default Vue.extend({
-  name: "App",
   components: {
-    HelloWorld,
+    ContentLayout,
+    HeaderLayout,
+    HeaderContent,
+    BodyPage,
   },
 });
 </script>
@@ -24,6 +33,10 @@ export default Vue.extend({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 40px;
+}
+
+body {
+  margin: 0;
 }
 </style>

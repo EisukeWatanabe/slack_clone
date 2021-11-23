@@ -1,0 +1,4 @@
+// z-indexの値を出力
+@function layer-get($name) {
+  @return map-get($layers, $name);
+}

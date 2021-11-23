@@ -1,0 +1,23 @@
+// ----------------------------------------------------------------------------
+// z-index
+// ----------------------------------------------------------------------------
+
+// 使い方 : z-index: layer-get(modal);
+
+$layers: (
+        tooltip: 1000000001,
+        dropdown-menu: 1000000000,
+        modal: 80,
+        modal-overlay: 70,
+        draggable-window: 60,
+        header: 50,
+        local-nav: 45,
+        dropdown: 40,
+        global-guide: 30,
+        flash-message: 30,
+        fixed: 20,
+        front: 10,
+        middle: 1,
+        back: -1,
+  // 背景や、非表示にしているinputタグなどに使われている。
+);

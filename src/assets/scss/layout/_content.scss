@@ -1,0 +1,20 @@
+.l-contentBody {
+  display: block;
+  min-height: 100%;
+  z-index: layer-get(front);
+}
+
+.l-contentBody__inner {
+  display: flex;
+  height: 100%;
+}
+
+.l-contentMain {
+  width: 100%;
+  height: 100%;
+}
+
+.l-contentMain__inner {
+  width: 100%;
+  height: 100%;
+}

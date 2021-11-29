@@ -14,7 +14,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .c-BodyPage {
-  height: calc(100vh - 100px);
-  background-color: #42b983;
+  height: calc(100vh - 40px);
+  background-color: gold;
+  width: 100%;
 }
 </style>

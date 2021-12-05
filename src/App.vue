@@ -6,10 +6,10 @@
       </header-layout>
       <div class="p-App__mainPage">
         <splitpanes class="default-theme">
-          <pane style="min-width: 360px">
+          <pane>
             <menu-sidebar />
           </pane>
-          <pane style="width: 100%">
+          <pane style="min-width: 70%">
             <body-page />
           </pane>
         </splitpanes>

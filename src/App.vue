@@ -5,11 +5,11 @@
         <header-content></header-content>
       </header-layout>
       <div class="p-App__mainPage">
-        <splitpanes class="default-theme p-App__splitpanes">
-          <pane>
+        <splitpanes class="default-theme">
+          <pane style="min-width: 360px">
             <menu-sidebar />
           </pane>
-          <pane>
+          <pane style="width: 100%">
             <body-page />
           </pane>
         </splitpanes>

@@ -24,13 +24,23 @@
           <p class="c-MenuSidebar__text">Slackコネクト</p>
         </div>
       </div>
-      <div class="c-MenuSidebar__wrapChannel">
+      <div class="c-MenuSidebar__section">
         <div class="c-MenuSidebar__subTitle">
           チャンネル
         </div>
         <div class="c-MenuSidebar__channelList">
           <div v-for="channel in channelList" :key="channel.id" class="c-MenuSidebar__channel">
             # {{ channel }}
+          </div>
+        </div>
+      </div>
+      <div class="c-MenuSidebar__section">
+        <div class="c-MenuSidebar__subTitle">
+          ダイレクトメッセージ
+        </div>
+        <div class="c-MenuSidebar__directMessageList">
+          <div class="c-MenuSidebar__directMessage" v-for="directMessage in directMessageList" :key="directMessage.id">
+            {{ directMessage.name }}
           </div>
         </div>
       </div>
@@ -48,7 +58,21 @@ export default Vue.extend({
     return {
       channelList: [
         'autify', 'aws-chatbot-stg', 'biz-dev', 'bug-report', 'competitiors', 'customer-support', 'dev-stg-ci-result', 'errors-app-stg', 'fulltime-employee'
-      ] as string
+      ] as string,
+      directMessageList: [] as string
+    }
+  },
+  async created() {
+    await this.getUserName();
+  },
+  methods: {
+    async getUserName() {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users');
+      if (res.ok) {
+        this.directMessageList = await res.json()
+      } else {
+        console.log("error");
+      }
     }
   }
 });
@@ -85,7 +109,7 @@ export default Vue.extend({
     text-align: center;
   }
 
-  &__wrapChannel {
+  &__section {
     font-size: 16px;
     padding: 16px;
   }

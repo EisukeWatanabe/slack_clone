@@ -6,39 +6,39 @@
       </div>
       <div class="c-MenuSidebar__wrapSelectMenu">
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="comment-dots" /><p class="c-MenuSidebar__text">スレッド</p>
+          <v-fa icon="comment-dots" /><p class="c-MenuSidebar__text">Threads</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="comments" /><p class="c-MenuSidebar__text">すべてのDM</p>
+          <v-fa icon="comments" /><p class="c-MenuSidebar__text">All DMs</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="at" /><p class="c-MenuSidebar__text">メンション＆リアクション</p>
+          <v-fa icon="at" /><p class="c-MenuSidebar__text">Mentions & reactions</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="bookmark" /><p class="c-MenuSidebar__text">ブックマーク</p>
+          <v-fa icon="bookmark" /><p class="c-MenuSidebar__text">Save items</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
           <div class="c-MenuSidebar__icon">
             <v-fa icon="ellipsis-v" />
           </div>
-          <p class="c-MenuSidebar__text">Slackコネクト</p>
+          <p class="c-MenuSidebar__text">Slack Connect</p>
         </div>
       </div>
       <div class="c-MenuSidebar__section">
-        <div class="c-MenuSidebar__subTitle">
-          チャンネル
+        <div class="c-MenuSidebar__subTitle" @click="showChannel">
+          <v-fa :icon="getChannelCaretIcon" /><p class="c-MenuSidebar__text">Channels</p>
         </div>
-        <div class="c-MenuSidebar__channelList">
+        <div class="c-MenuSidebar__channelList" v-if="statusChannel">
           <div v-for="channel in channelList" :key="channel.id" class="c-MenuSidebar__channel">
             # {{ channel }}
           </div>
         </div>
       </div>
       <div class="c-MenuSidebar__section">
-        <div class="c-MenuSidebar__subTitle">
-          ダイレクトメッセージ
+        <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
+          <v-fa :icon="getDirectMessageCaretIcon" /><p class="c-MenuSidebar__text">Direct messages</p>
         </div>
-        <div class="c-MenuSidebar__directMessageList">
+        <div class="c-MenuSidebar__directMessageList" v-if="statusDirectMessage">
           <div class="c-MenuSidebar__directMessage" v-for="directMessage in directMessageList" :key="directMessage.id">
             {{ directMessage.name }}
           </div>
@@ -59,11 +59,29 @@ export default Vue.extend({
       channelList: [
         'autify', 'aws-chatbot-stg', 'biz-dev', 'bug-report', 'competitiors', 'customer-support', 'dev-stg-ci-result', 'errors-app-stg', 'fulltime-employee'
       ] as string,
-      directMessageList: [] as string
+      directMessageList: [] as string,
+      statusChannel: true as boolean,
+      statusDirectMessage: true as boolean
     }
   },
   async created() {
     await this.getUserName();
+  },
+  computed: {
+    getChannelCaretIcon() {
+      if (this.statusChannel) {
+        return 'caret-down';
+      } else {
+        return 'caret-up';
+      }
+    },
+    getDirectMessageCaretIcon() {
+      if (this.statusDirectMessage) {
+        return 'caret-down';
+      } else {
+        return 'caret-up';
+      }
+    }
   },
   methods: {
     async getUserName() {
@@ -73,6 +91,12 @@ export default Vue.extend({
       } else {
         console.log("error");
       }
+    },
+    showChannel() {
+      this.statusChannel = !this.statusChannel
+    },
+    showDirectMessage() {
+      this.statusDirectMessage = !this.statusDirectMessage
     }
   }
 });
@@ -80,19 +104,23 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .c-MenuSidebar {
-  background-color: green;
+  background-color: #01242E;
   text-align: left;
   color: white;
+  white-space: nowrap;
 
   &__groupName {
     padding: 16px;
-    background-color: red;
+    background-color: #01242E;
     font-size: 20px;
     font-weight: bold;
+    border: 1px solid grey;
   }
 
   &__wrapSelectMenu {
     padding: 16px;
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
   }
 
   &__selectMenu {
@@ -105,17 +133,21 @@ export default Vue.extend({
   }
 
   &__icon {
-    width: 12px;
+    margin-left: 2px;
+    margin-right: 4px;
     text-align: center;
   }
 
   &__section {
     font-size: 16px;
     padding: 16px;
+    border-left: 1px solid grey;
   }
 
   &__subTitle {
     font-size: 18px;
+    display: flex;
+    align-items: center;
   }
 
   &__channelList {
@@ -124,6 +156,15 @@ export default Vue.extend({
   }
 
   &__channel {
+    margin-top: 8px;
+  }
+
+  &__directMessageList {
+    padding: 16px;
+    font-size: 18px;
+  }
+
+  &__directMessage {
     margin-top: 8px;
   }
 

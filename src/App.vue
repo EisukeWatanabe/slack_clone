@@ -61,8 +61,9 @@ body {
     display: flex;
   }
 
-  &__splitpanes {
-    height: calc(100vh - 40px);
+  .splitpanes__pane {
+
   }
+
 }
 </style>

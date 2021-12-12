@@ -6,16 +6,16 @@
       </div>
       <div class="c-MenuSidebar__wrapSelectMenu">
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="comment-dots" /><p class="c-MenuSidebar__text">Threads</p>
+          <v-fa :icon="['far','comment-dots']" /><p class="c-MenuSidebar__text">Threads</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="comments" /><p class="c-MenuSidebar__text">All DMs</p>
+          <v-fa :icon="['far','comments']" /><p class="c-MenuSidebar__text">All DMs</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
           <v-fa icon="at" /><p class="c-MenuSidebar__text">Mentions & reactions</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="bookmark" /><p class="c-MenuSidebar__text">Save items</p>
+          <v-fa :icon="['far','bookmark']" /><p class="c-MenuSidebar__text">Save items</p>
         </div>
         <div class="c-MenuSidebar__selectMenu">
           <div class="c-MenuSidebar__icon">
@@ -58,8 +58,8 @@ export default Vue.extend({
     return {
       channelList: [
         'autify', 'aws-chatbot-stg', 'biz-dev', 'bug-report', 'competitiors', 'customer-support', 'dev-stg-ci-result', 'errors-app-stg', 'fulltime-employee'
-      ] as string,
-      directMessageList: [] as string,
+      ] as string[],
+      directMessageList: [] as string[],
       statusChannel: true as boolean,
       statusDirectMessage: true as boolean
     }

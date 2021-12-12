@@ -108,6 +108,8 @@ export default Vue.extend({
   text-align: left;
   color: white;
   white-space: nowrap;
+  overflow-y: scroll;
+  height: calc(100vh - 40px);
 
   &__groupName {
     padding: 16px;

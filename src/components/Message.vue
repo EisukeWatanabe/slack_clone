@@ -1,28 +1,24 @@
 <template>
-  <div class="c-BodyPage">
-    <slot />
-    <message-input class="c-BodyPage__messageInput" />
+  <div class="c-Message">
+
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import MessageInput from "@/components/MessageInput"
 
 export default Vue.extend({
-  components: {MessageInput},
+  components: {},
 });
 </script>
 
 <style lang="scss" scoped>
 @import "src/assets/scss/import";
 
-.c-BodyPage {
+.c-Message {
+  height: calc(100vh - 74px);
   background-color: #262626;
   width: 100%;
 
-  &__messageInput {
-
-  }
 }
 </style>

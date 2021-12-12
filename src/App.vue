@@ -5,12 +5,14 @@
         <header-content></header-content>
       </header-layout>
       <div class="p-App__mainPage">
-        <splitpanes class="default-theme">
-          <pane>
+        <splitpanes class="default-theme" style="height: 100%">
+          <pane size="30">
             <menu-sidebar />
           </pane>
-          <pane style="min-width: 70%">
-            <body-page />
+          <pane min-size="70">
+            <body-page>
+              <message />
+            </body-page>
           </pane>
         </splitpanes>
       </div>
@@ -27,6 +29,7 @@ import BodyPage from "@/components/BodyPage.vue";
 import MenuSidebar from "@/components/MenuSidebar.vue";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
+import Message from "@/components/Message";
 
 export default Vue.extend({
   components: {
@@ -36,7 +39,8 @@ export default Vue.extend({
     BodyPage,
     MenuSidebar,
     Splitpanes,
-    Pane
+    Pane,
+    Message
   },
 });
 </script>
@@ -61,9 +65,6 @@ body {
     display: flex;
   }
 
-  .splitpanes__pane {
-
-  }
 
 }
 </style>

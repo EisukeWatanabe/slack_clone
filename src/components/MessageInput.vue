@@ -1,7 +1,14 @@
 <template>
-  <div>
+  <div class="c-MessageInput">
     <form action="" method="post" class="c-MessageInput__wrapTextArea">
-      <textarea name="" id="" cols="80" rows="1" class="c-MessageInput__textArea"></textarea>
+      <textarea-autosize
+          class="c-MessageInput__textArea"
+          placeholder="Type something here..."
+          ref="myTextarea"
+          value=""
+          :min-height="30"
+          :max-height="350"
+      />
       <button type="submit" class="c-MessageInput__button"><v-fa icon="paper-plane" /></button>
     </form>
   </div>
@@ -9,9 +16,13 @@
 
 <script lang="ts">
 import Vue from "vue";
+import VueTextareaAutosize from "vue-textarea-autosize";
+
+Vue.use(VueTextareaAutosize)
+
 
 export default Vue.extend({
-  name: "MessageInput"
+  components: {}
 });
 </script>
 
@@ -19,6 +30,7 @@ export default Vue.extend({
 @import "src/assets/scss/import";
 
 .c-MessageInput {
+  padding: 24px;
 
   &__button {
     border: none;

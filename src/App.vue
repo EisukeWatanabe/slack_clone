@@ -29,7 +29,7 @@ import BodyPage from "@/components/BodyPage.vue";
 import MenuSidebar from "@/components/MenuSidebar.vue";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import Message from "@/components/Message";
+import Message from "@/components/Message.vue";
 
 export default Vue.extend({
   components: {

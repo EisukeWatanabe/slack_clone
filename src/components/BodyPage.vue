@@ -22,7 +22,6 @@ export default Vue.extend({
   width: 100%;
 
   &__messageInput {
-
   }
 }
 </style>

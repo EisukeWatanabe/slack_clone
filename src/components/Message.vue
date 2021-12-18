@@ -16,7 +16,7 @@ export default Vue.extend({
 @import "src/assets/scss/import";
 
 .c-Message {
-  height: calc(100vh - 74px);
+  height: calc(100vh - 122px);
   background-color: #262626;
   width: 100%;
 

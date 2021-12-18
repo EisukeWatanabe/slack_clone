@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import MessageInput from "@/components/MessageInput"
+import MessageInput from "@/components/MessageInput.vue"
 
 export default Vue.extend({
   components: {MessageInput},

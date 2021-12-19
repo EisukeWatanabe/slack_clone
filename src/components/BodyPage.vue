@@ -1,7 +1,11 @@
 <template>
   <div class="c-BodyPage">
-    <slot />
-    <message-input class="c-BodyPage__messageInput" />
+    <div class="c-BodyPage__viewBody">
+      <slot />
+    </div>
+    <div class="c-BodyPage__viewFooter">
+      <message-input class="c-BodyPage__messageInput" />
+    </div>
   </div>
 </template>
 
@@ -20,8 +24,25 @@ export default Vue.extend({
 .c-BodyPage {
   background-color: #262626;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: calc(100vh - 40px);
+  background-size: cover;
+  position: relative;
 
-  &__messageInput {
+  &__viewBody {
+    flex: 1;
+  }
+
+  &__viewFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #262626;
+    position: absolute;
+    bottom: 20px;
   }
 }
 </style>

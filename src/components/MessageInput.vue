@@ -3,7 +3,7 @@
     <form action="" method="post" class="c-MessageInput__wrapTextArea">
       <textarea-autosize
           class="c-MessageInput__textArea"
-          placeholder="Type something here..."
+          placeholder="Message"
           ref="myTextarea"
           value=""
           :min-height="30"
@@ -30,7 +30,6 @@ export default Vue.extend({
 @import "src/assets/scss/import";
 
 .c-MessageInput {
-  padding: 24px;
 
   &__button {
     border: none;
@@ -46,17 +45,11 @@ export default Vue.extend({
   }
 
   &__textArea {
-    box-sizing: border-box;
-    padding: 5px 15px;
     width: 100%;
-    height: 100%;
-    background-color: grey;
+    color: #D1D2D3;
+    background-color: #222629;
     border: 1px solid #b6c3c6;
     border-radius: 4px;
-    color: inherit;
-    font: inherit;
-    letter-spacing: inherit;
-    resize: none;
   }
 }
 

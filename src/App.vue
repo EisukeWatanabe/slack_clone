@@ -64,7 +64,10 @@ body {
   &__mainPage {
     display: flex;
   }
-
-
 }
+
+.default-theme ::v-deep(.splitpanes__splitter) {
+  width: 1px;
+}
+
 </style>

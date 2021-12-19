@@ -1,8 +1,16 @@
 <template>
   <div class="c-MenuSidebar">
     <content-layout>
-      <div class="c-MenuSidebar__groupName">
-        SmartRound
+      <div class="c-MenuSidebar__top">
+        <div class="c-MenuSidebar__groupName">
+          SmartRound
+          <div class="c-MenuSidebar__angleDown">
+            <v-fa icon="angle-down" />
+          </div>
+        </div>
+        <div class="c-MenuSidebar__newMessage">
+          <v-fa :icon="['far','edit']" />
+        </div>
       </div>
       <div class="c-MenuSidebar__wrapSelectMenu">
         <div class="c-MenuSidebar__selectMenu">
@@ -26,7 +34,7 @@
       </div>
       <div class="c-MenuSidebar__section">
         <div class="c-MenuSidebar__subTitle" @click="showChannel">
-          <v-fa :icon="getChannelCaretIcon" /><p class="c-MenuSidebar__text">Channels</p>
+          <v-fa :icon="getChannelCaretIcon" /><div class="c-MenuSidebar__text">Channels</div>
         </div>
         <div class="c-MenuSidebar__channelList" v-if="statusChannel">
           <div v-for="channel in channelList" :key="channel.id" class="c-MenuSidebar__channel">
@@ -36,7 +44,7 @@
       </div>
       <div class="c-MenuSidebar__section">
         <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
-          <v-fa :icon="getDirectMessageCaretIcon" /><p class="c-MenuSidebar__text">Direct messages</p>
+          <v-fa :icon="getDirectMessageCaretIcon" /><div class="c-MenuSidebar__text">Direct messages</div>
         </div>
         <div class="c-MenuSidebar__directMessageList" v-if="statusDirectMessage">
           <div class="c-MenuSidebar__directMessage" v-for="directMessage in directMessageList" :key="directMessage.id">
@@ -111,12 +119,36 @@ export default Vue.extend({
   overflow-y: scroll;
   height: calc(100vh - 40px);
 
-  &__groupName {
-    padding: 16px;
+  &__top {
     background-color: #01242E;
     font-size: 20px;
     font-weight: bold;
     border: 1px solid grey;
+    display: flex;
+  }
+
+  &__groupName {
+    padding: 16px 44px 16px 16px;
+    display: flex;
+  }
+
+  &__angleDown {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+  }
+
+  &__newMessage {
+    min-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #FFF;
+    color: #01242E;
+    margin: auto 24px auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__wrapSelectMenu {

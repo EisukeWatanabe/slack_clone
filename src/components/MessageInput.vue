@@ -5,9 +5,8 @@
           class="c-MessageInput__textArea"
           placeholder="Message"
           ref="myTextarea"
-          value=""
-          :min-height="30"
-          :max-height="350"
+          v-model="textMessage"
+          :max-height="400"
       />
       <button type="submit" class="c-MessageInput__button"><v-fa icon="paper-plane" /></button>
     </form>
@@ -22,7 +21,12 @@ Vue.use(VueTextareaAutosize)
 
 
 export default Vue.extend({
-  components: {}
+  components: {},
+  data() {
+    return {
+      textMessage: '' as string
+    }
+  }
 });
 </script>
 

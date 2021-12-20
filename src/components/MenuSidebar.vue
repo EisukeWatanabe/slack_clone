@@ -14,22 +14,22 @@
       </div>
       <div class="c-MenuSidebar__wrapSelectMenu">
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','comment-dots']" /><p class="c-MenuSidebar__text">Threads</p>
+          <v-fa :icon="['far','comment-dots']" /><div class="c-MenuSidebar__text">Threads</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','comments']" /><p class="c-MenuSidebar__text">All DMs</p>
+          <v-fa :icon="['far','comments']" /><div class="c-MenuSidebar__text">All DMs</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="at" /><p class="c-MenuSidebar__text">Mentions & reactions</p>
+          <v-fa icon="at" /><div class="c-MenuSidebar__text">Mentions & reactions</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','bookmark']" /><p class="c-MenuSidebar__text">Save items</p>
+          <v-fa :icon="['far','bookmark']" /><div class="c-MenuSidebar__text">Save items</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
           <div class="c-MenuSidebar__icon">
             <v-fa icon="ellipsis-v" />
           </div>
-          <p class="c-MenuSidebar__text">Slack Connect</p>
+          <div class="c-MenuSidebar__text">Slack Connect</div>
         </div>
       </div>
       <div class="c-MenuSidebar__section">
@@ -125,6 +125,7 @@ export default Vue.extend({
     font-weight: bold;
     border: 1px solid grey;
     display: flex;
+    cursor: pointer;
   }
 
   &__groupName {
@@ -155,11 +156,13 @@ export default Vue.extend({
     padding: 16px;
     border-right: 1px solid grey;
     border-left: 1px solid grey;
+    cursor: pointer;
   }
 
   &__selectMenu {
     display: flex;
     align-items: center;
+    margin-top: 10px;
   }
 
   &__text {
@@ -182,11 +185,13 @@ export default Vue.extend({
     font-size: 18px;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   &__channelList {
     padding: 16px;
     font-size: 18px;
+    cursor: pointer;
   }
 
   &__channel {
@@ -196,6 +201,7 @@ export default Vue.extend({
   &__directMessageList {
     padding: 16px;
     font-size: 18px;
+    cursor: pointer;
   }
 
   &__directMessage {

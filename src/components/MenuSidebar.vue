@@ -141,8 +141,8 @@ export default Vue.extend({
   }
 
   &__newMessage {
-    min-width: 42px;
-    height: 42px;
+    min-width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #FFF;
     color: #01242E;
@@ -150,6 +150,7 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
   }
 
   &__wrapSelectMenu {

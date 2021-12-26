@@ -7,9 +7,9 @@
       <form action="">
         <button class="c-HeaderContent__input">
           <v-fa icon="search" />
-          <span class="c-HeaderContent__inputPlaceholder"
-            >Search SmartRound</span
-          >
+          <span class="c-HeaderContent__inputPlaceholder">
+            Search SmartRound
+          </span>
         </button>
       </form>
     </div>
@@ -48,20 +48,22 @@ export default Vue.extend({
   }
 
   &__searchContainer {
-    min-width: 0;
-    max-width: 732px;
-    flex: 2;
+    max-width: 723px;
+    width: 100%;
   }
 
   &__input {
-    min-width: 732px;
-    flex: 2;
+    width: 100%;
+    justify-content: center;
     height: 24px;
     border-radius: 6px;
     background-color: rgba(156, 156, 156, 0.2);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
     border: solid 1px rgb(156, 156, 156);
     color: rgb(156, 156, 156);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
 
   &__inputPlaceholder {

@@ -65,7 +65,7 @@ body {
   }
 }
 
-.default-theme ::v-deep(.splitpanes__splitter) {
-  width: 1px;
+.splitpanes__splitter {
+  width: 1px !important;
 }
 </style>

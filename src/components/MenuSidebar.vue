@@ -9,21 +9,25 @@
           </div>
         </div>
         <div class="c-MenuSidebar__newMessage">
-          <v-fa :icon="['far','edit']" />
+          <v-fa :icon="['far', 'edit']" />
         </div>
       </div>
       <div class="c-MenuSidebar__wrapSelectMenu">
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','comment-dots']" /><div class="c-MenuSidebar__text">Threads</div>
+          <v-fa :icon="['far', 'comment-dots']" />
+          <div class="c-MenuSidebar__text">Threads</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','comments']" /><div class="c-MenuSidebar__text">All DMs</div>
+          <v-fa :icon="['far', 'comments']" />
+          <div class="c-MenuSidebar__text">All DMs</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="at" /><div class="c-MenuSidebar__text">Mentions & reactions</div>
+          <v-fa icon="at" />
+          <div class="c-MenuSidebar__text">Mentions & reactions</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far','bookmark']" /><div class="c-MenuSidebar__text">Save items</div>
+          <v-fa :icon="['far', 'bookmark']" />
+          <div class="c-MenuSidebar__text">Save items</div>
         </div>
         <div class="c-MenuSidebar__selectMenu">
           <div class="c-MenuSidebar__icon">
@@ -34,20 +38,33 @@
       </div>
       <div class="c-MenuSidebar__section">
         <div class="c-MenuSidebar__subTitle" @click="showChannel">
-          <v-fa :icon="getChannelCaretIcon" /><div class="c-MenuSidebar__text">Channels</div>
+          <v-fa :icon="getChannelCaretIcon" />
+          <div class="c-MenuSidebar__text">Channels</div>
         </div>
         <div class="c-MenuSidebar__channelList" v-if="statusChannel">
-          <div v-for="channel in channelList" :key="channel.id" class="c-MenuSidebar__channel">
+          <div
+            v-for="channel in channelList"
+            :key="channel.id"
+            class="c-MenuSidebar__channel"
+          >
             # {{ channel }}
           </div>
         </div>
       </div>
       <div class="c-MenuSidebar__section">
         <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
-          <v-fa :icon="getDirectMessageCaretIcon" /><div class="c-MenuSidebar__text">Direct messages</div>
+          <v-fa :icon="getDirectMessageCaretIcon" />
+          <div class="c-MenuSidebar__text">Direct messages</div>
         </div>
-        <div class="c-MenuSidebar__directMessageList" v-if="statusDirectMessage">
-          <div class="c-MenuSidebar__directMessage" v-for="directMessage in directMessageList" :key="directMessage.id">
+        <div
+          class="c-MenuSidebar__directMessageList"
+          v-if="statusDirectMessage"
+        >
+          <div
+            class="c-MenuSidebar__directMessage"
+            v-for="directMessage in directMessageList"
+            :key="directMessage.id"
+          >
             {{ directMessage.name }}
           </div>
         </div>
@@ -65,12 +82,20 @@ export default Vue.extend({
   data() {
     return {
       channelList: [
-        'autify', 'aws-chatbot-stg', 'biz-dev', 'bug-report', 'competitiors', 'customer-support', 'dev-stg-ci-result', 'errors-app-stg', 'fulltime-employee'
+        "autify",
+        "aws-chatbot-stg",
+        "biz-dev",
+        "bug-report",
+        "competitiors",
+        "customer-support",
+        "dev-stg-ci-result",
+        "errors-app-stg",
+        "fulltime-employee",
       ] as string[],
       directMessageList: [] as string[],
       statusChannel: true as boolean,
-      statusDirectMessage: true as boolean
-    }
+      statusDirectMessage: true as boolean,
+    };
   },
   async created() {
     await this.getUserName();
@@ -78,41 +103,41 @@ export default Vue.extend({
   computed: {
     getChannelCaretIcon() {
       if (this.statusChannel) {
-        return 'caret-down';
+        return "caret-down";
       } else {
-        return 'caret-up';
+        return "caret-up";
       }
     },
     getDirectMessageCaretIcon() {
       if (this.statusDirectMessage) {
-        return 'caret-down';
+        return "caret-down";
       } else {
-        return 'caret-up';
+        return "caret-up";
       }
-    }
+    },
   },
   methods: {
     async getUserName() {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users');
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
       if (res.ok) {
-        this.directMessageList = await res.json()
+        this.directMessageList = await res.json();
       } else {
         console.log("error");
       }
     },
     showChannel() {
-      this.statusChannel = !this.statusChannel
+      this.statusChannel = !this.statusChannel;
     },
     showDirectMessage() {
-      this.statusDirectMessage = !this.statusDirectMessage
-    }
-  }
+      this.statusDirectMessage = !this.statusDirectMessage;
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .c-MenuSidebar {
-  background-color: #01242E;
+  background-color: #01242e;
   text-align: left;
   color: white;
   white-space: nowrap;
@@ -120,10 +145,10 @@ export default Vue.extend({
   height: calc(100vh - 40px);
 
   &__top {
-    background-color: #01242E;
+    background-color: #01242e;
     font-size: 20px;
     font-weight: bold;
-    border: 1px solid grey;
+    border: 1px solid rgb(26, 58, 67);
     display: flex;
     cursor: pointer;
   }
@@ -144,8 +169,8 @@ export default Vue.extend({
     min-width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #FFF;
-    color: #01242E;
+    background-color: #fff;
+    color: #01242e;
     margin: auto 24px auto auto;
     display: flex;
     align-items: center;
@@ -155,8 +180,8 @@ export default Vue.extend({
 
   &__wrapSelectMenu {
     padding: 16px;
-    border-right: 1px solid grey;
-    border-left: 1px solid grey;
+    border-right: 1px solid rgb(26, 58, 67);
+    border-left: 1px solid rgb(26, 58, 67);
     cursor: pointer;
   }
 
@@ -179,7 +204,7 @@ export default Vue.extend({
   &__section {
     font-size: 16px;
     padding: 16px;
-    border-left: 1px solid grey;
+    border-left: 1px solid rgb(26, 58, 67);
   }
 
   &__subTitle {
@@ -208,7 +233,5 @@ export default Vue.extend({
   &__directMessage {
     margin-top: 8px;
   }
-
 }
-
 </style>

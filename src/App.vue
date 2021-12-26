@@ -6,10 +6,10 @@
       </header-layout>
       <div class="p-App__mainPage">
         <splitpanes class="default-theme" style="height: 100%">
-          <pane size="30">
+          <pane size="35">
             <menu-sidebar />
           </pane>
-          <pane min-size="70">
+          <pane min-size="65">
             <body-page>
               <message />
             </body-page>
@@ -40,7 +40,7 @@ export default Vue.extend({
     MenuSidebar,
     Splitpanes,
     Pane,
-    Message
+    Message,
   },
 });
 </script>
@@ -60,7 +60,6 @@ body {
 }
 
 .p-App {
-
   &__mainPage {
     display: flex;
   }
@@ -69,5 +68,4 @@ body {
 .default-theme ::v-deep(.splitpanes__splitter) {
   width: 1px;
 }
-
 </style>

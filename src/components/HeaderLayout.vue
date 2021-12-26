@@ -21,7 +21,7 @@ export default Vue.extend({
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #04313B;
+  background-color: #04313b;
   height: 24px;
 }
 </style>

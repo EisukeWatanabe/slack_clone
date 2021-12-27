@@ -12,60 +12,62 @@
           <v-fa :icon="['far', 'edit']" />
         </div>
       </div>
-      <div class="c-MenuSidebar__wrapSelectMenu">
-        <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far', 'comment-dots']" />
-          <div class="c-MenuSidebar__text">Threads</div>
-        </div>
-        <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far', 'comments']" />
-          <div class="c-MenuSidebar__text">All DMs</div>
-        </div>
-        <div class="c-MenuSidebar__selectMenu">
-          <v-fa icon="at" />
-          <div class="c-MenuSidebar__text">Mentions & reactions</div>
-        </div>
-        <div class="c-MenuSidebar__selectMenu">
-          <v-fa :icon="['far', 'bookmark']" />
-          <div class="c-MenuSidebar__text">Save items</div>
-        </div>
-        <div class="c-MenuSidebar__selectMenu">
-          <div class="c-MenuSidebar__icon">
-            <v-fa icon="ellipsis-v" />
+      <div class="c-MenuSidebar__sideBarBody">
+        <div class="c-MenuSidebar__wrapSelectMenu">
+          <div class="c-MenuSidebar__selectMenu">
+            <v-fa :icon="['far', 'comment-dots']" />
+            <div class="c-MenuSidebar__text">Threads</div>
           </div>
-          <div class="c-MenuSidebar__text">Slack Connect</div>
-        </div>
-      </div>
-      <div class="c-MenuSidebar__section">
-        <div class="c-MenuSidebar__subTitle" @click="showChannel">
-          <v-fa :icon="getChannelCaretIcon" />
-          <div class="c-MenuSidebar__text">Channels</div>
-        </div>
-        <div class="c-MenuSidebar__channelList" v-if="statusChannel">
-          <div
-            v-for="channel in channelList"
-            :key="channel.id"
-            class="c-MenuSidebar__channel"
-          >
-            # {{ channel }}
+          <div class="c-MenuSidebar__selectMenu">
+            <v-fa :icon="['far', 'comments']" />
+            <div class="c-MenuSidebar__text">All DMs</div>
+          </div>
+          <div class="c-MenuSidebar__selectMenu">
+            <v-fa icon="at" />
+            <div class="c-MenuSidebar__text">Mentions & reactions</div>
+          </div>
+          <div class="c-MenuSidebar__selectMenu">
+            <v-fa :icon="['far', 'bookmark']" />
+            <div class="c-MenuSidebar__text">Save items</div>
+          </div>
+          <div class="c-MenuSidebar__selectMenu">
+            <div class="c-MenuSidebar__icon">
+              <v-fa icon="ellipsis-v" />
+            </div>
+            <div class="c-MenuSidebar__text">Slack Connect</div>
           </div>
         </div>
-      </div>
-      <div class="c-MenuSidebar__section">
-        <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
-          <v-fa :icon="getDirectMessageCaretIcon" />
-          <div class="c-MenuSidebar__text">Direct messages</div>
+        <div class="c-MenuSidebar__section">
+          <div class="c-MenuSidebar__subTitle" @click="showChannel">
+            <v-fa :icon="getChannelCaretIcon" />
+            <div class="c-MenuSidebar__text">Channels</div>
+          </div>
+          <div class="c-MenuSidebar__channelList" v-if="statusChannel">
+            <div
+              v-for="channel in channelList"
+              :key="channel.id"
+              class="c-MenuSidebar__channel"
+            >
+              # {{ channel }}
+            </div>
+          </div>
         </div>
-        <div
-          class="c-MenuSidebar__directMessageList"
-          v-if="statusDirectMessage"
-        >
+        <div class="c-MenuSidebar__section">
+          <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
+            <v-fa :icon="getDirectMessageCaretIcon" />
+            <div class="c-MenuSidebar__text">Direct messages</div>
+          </div>
           <div
-            class="c-MenuSidebar__directMessage"
-            v-for="directMessage in directMessageList"
-            :key="directMessage.id"
+            class="c-MenuSidebar__directMessageList"
+            v-if="statusDirectMessage"
           >
-            {{ directMessage.name }}
+            <div
+              class="c-MenuSidebar__directMessage"
+              v-for="directMessage in directMessageList"
+              :key="directMessage.id"
+            >
+              {{ directMessage.name }}
+            </div>
           </div>
         </div>
       </div>
@@ -141,19 +143,8 @@ export default Vue.extend({
   text-align: left;
   color: white;
   white-space: nowrap;
-  overflow-y: auto;
   height: calc(100vh - 40px);
   solid-color: red;
-
-  &::-webkit-scrollbar {
-    background-color: #01242e;
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.45);
-    border-radius: 4px;
-  }
 
   &__top {
     background-color: #01242e;
@@ -187,6 +178,21 @@ export default Vue.extend({
     align-items: center;
     justify-content: center;
     font-size: 16px;
+  }
+
+  &__sideBarBody {
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+
+    &::-webkit-scrollbar {
+      background-color: #01242e;
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.45);
+      border-radius: 4px;
+    }
   }
 
   &__wrapSelectMenu {

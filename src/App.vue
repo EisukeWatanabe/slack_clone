@@ -67,7 +67,8 @@ body {
   .splitpanes--vertical > .splitpanes__splitter {
     width: 4px;
     opacity: 1;
-    background-color: #262626;
+    background-color: #01242e;
+    border: #01242e;
     cursor: pointer;
 
     &:hover {

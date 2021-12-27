@@ -12,7 +12,12 @@
           <v-fa :icon="['far', 'edit']" />
         </div>
       </div>
-      <div class="c-MenuSidebar__sideBarBody">
+      <div
+        class="c-MenuSidebar__sideBarBody"
+        :class="{ 'c-MenuSidebar__sideBarBody--hide': showScrollbar }"
+        @mouseenter="onScrollbar"
+        @mouseleave="offScrollbar"
+      >
         <div class="c-MenuSidebar__wrapSelectMenu">
           <div class="c-MenuSidebar__selectMenu">
             <v-fa :icon="['far', 'comment-dots']" />
@@ -97,6 +102,7 @@ export default Vue.extend({
       directMessageList: [] as string[],
       statusChannel: true as boolean,
       statusDirectMessage: true as boolean,
+      showScrollbar: true,
     };
   },
   async created() {
@@ -133,6 +139,12 @@ export default Vue.extend({
     showDirectMessage() {
       this.statusDirectMessage = !this.statusDirectMessage;
     },
+    onScrollbar() {
+      this.showScrollbar = false;
+    },
+    offScrollbar() {
+      this.showScrollbar = true;
+    },
   },
 });
 </script>
@@ -144,7 +156,6 @@ export default Vue.extend({
   color: white;
   white-space: nowrap;
   height: calc(100vh - 40px);
-  solid-color: red;
 
   &__top {
     background-color: #01242e;
@@ -183,6 +194,10 @@ export default Vue.extend({
   &__sideBarBody {
     overflow-y: auto;
     height: calc(100vh - 100px);
+
+    &--hide {
+      overflow-y: hidden;
+    }
 
     &::-webkit-scrollbar {
       background-color: #01242e;

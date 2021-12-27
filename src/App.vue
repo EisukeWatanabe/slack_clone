@@ -63,9 +63,16 @@ body {
   &__mainPage {
     display: flex;
   }
-}
 
-.splitpanes__splitter {
-  width: 1px !important;
+  .splitpanes--vertical > .splitpanes__splitter {
+    width: 4px;
+    opacity: 1;
+    background-color: #262626;
+    cursor: pointer;
+
+    &:hover {
+      background-color: deepskyblue;
+    }
+  }
 }
 </style>

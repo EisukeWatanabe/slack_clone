@@ -56,4 +56,9 @@ export default Vue.extend({
     border-radius: 4px;
   }
 }
+
+textarea {
+  background-color: red;
+  color: red;
+}
 </style>

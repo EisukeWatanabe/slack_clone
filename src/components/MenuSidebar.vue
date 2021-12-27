@@ -141,8 +141,19 @@ export default Vue.extend({
   text-align: left;
   color: white;
   white-space: nowrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - 40px);
+  solid-color: red;
+
+  &::-webkit-scrollbar {
+    background-color: #01242e;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.45);
+    border-radius: 4px;
+  }
 
   &__top {
     background-color: #01242e;

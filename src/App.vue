@@ -69,7 +69,6 @@ body {
     opacity: 1;
     background-color: #01242e;
     border: #01242e;
-    cursor: pointer;
 
     &:hover {
       background-color: deepskyblue;

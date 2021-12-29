@@ -66,10 +66,15 @@
           >
             <div
               class="c-MenuSidebar__directMessage"
-              v-for="directMessage in directMessageList"
-              :key="directMessage.id"
+              v-for="directMessageItem in directMessageList"
+              :key="directMessageItem.id"
+              :class="{
+                'c-MenuSidebar__directMessage--isCurrent':
+                  directMessageItem.id === selectedDirectMessage,
+              }"
+              @click="selectDirectMessage(directMessageItem.id)"
             >
-              {{ directMessage.name }}
+              {{ directMessageItem.name }}
             </div>
           </div>
         </div>
@@ -82,6 +87,12 @@
 import Vue from "vue";
 import ContentLayout from "@/components/ContentLayout.vue";
 
+type menuList = {
+  title: string;
+  id: number;
+  icon: string;
+};
+
 type channelList = {
   title: string;
   id: number;
@@ -92,21 +103,21 @@ export default Vue.extend({
   data() {
     return {
       menuList: [
-        { title: "Threads", id: 1, icon: ["far", "comment-dots"] },
-        { title: "All DMs", id: 2, icon: ["far", "comments"] },
-        { title: "Mentions & reactions", id: 3, icon: "at" },
-        { title: "Save items", id: 4, icon: ["far", "bookmark"] },
-        { title: "Channels", id: 5, icon: "ellipsis-v" },
-      ],
+        { title: "Threads", id: 11, icon: ["far", "comment-dots"] },
+        { title: "All DMs", id: 12, icon: ["far", "comments"] },
+        { title: "Mentions & reactions", id: 13, icon: "at" },
+        { title: "Save items", id: 14, icon: ["far", "bookmark"] },
+        { title: "Channels", id: 15, icon: "ellipsis-v" },
+      ] as menuList[],
       channelList: [
-        { title: "autify", id: 6 },
-        { title: "aws-chatbot-stg", id: 7 },
-        { title: "bug-report", id: 8 },
-        { title: "competitiors", id: 9 },
-        { title: "customer-support", id: 10 },
-        { title: "dev-stg-ci-result", id: 11 },
-        { title: "errors-app-stg", id: 12 },
-        { title: "fulltime-employee", id: 13 },
+        { title: "autify", id: 16 },
+        { title: "aws-chatbot-stg", id: 17 },
+        { title: "bug-report", id: 18 },
+        { title: "competitiors", id: 19 },
+        { title: "customer-support", id: 20 },
+        { title: "dev-stg-ci-result", id: 21 },
+        { title: "errors-app-stg", id: 22 },
+        { title: "fulltime-employee", id: 23 },
       ] as channelList[],
       directMessageList: [] as string[],
       statusChannel: true as boolean,
@@ -114,6 +125,7 @@ export default Vue.extend({
       showScrollbar: true,
       selectedMenu: null as number | null,
       selectedChannel: null as number | null,
+      selectedDirectMessage: null as number | null,
     };
   },
   async created() {
@@ -158,9 +170,27 @@ export default Vue.extend({
     },
     selectMenu(id: number) {
       this.selectedMenu = id;
+      this.resetSelectedChannel();
+      this.resetDirectMessage();
     },
     selectChannel(id: number) {
       this.selectedChannel = id;
+      this.resetSelectedMenu();
+      this.resetDirectMessage();
+    },
+    selectDirectMessage(id: number) {
+      this.selectedDirectMessage = id;
+      this.resetSelectedMenu();
+      this.resetSelectedChannel();
+    },
+    resetSelectedChannel() {
+      this.selectedChannel = null;
+    },
+    resetSelectedMenu() {
+      this.selectedMenu = null;
+    },
+    resetDirectMessage() {
+      this.selectedDirectMessage = null;
     },
   },
 });
@@ -248,7 +278,7 @@ export default Vue.extend({
   }
 
   &__icon {
-    width: 18px;
+    min-width: 18px;
   }
 
   &__text {
@@ -303,6 +333,9 @@ export default Vue.extend({
     padding-left: 29px;
     &:hover {
       background-color: rgb(121, 4, 189);
+    }
+    &--isCurrent {
+      color: #4ce7a8;
     }
   }
 }

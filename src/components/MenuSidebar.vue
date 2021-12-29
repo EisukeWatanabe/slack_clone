@@ -37,7 +37,9 @@
         </div>
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showChannel">
-            <v-fa :icon="getChannelCaretIcon" />
+            <div class="c-MenuSidebar__icon">
+              <v-fa :icon="getChannelCaretIcon" />
+            </div>
             <div class="c-MenuSidebar__text">Channels</div>
           </div>
           <div class="c-MenuSidebar__channelList" v-if="statusChannel">
@@ -51,13 +53,16 @@
               @click="selectChannel(channelItem.id)"
               class="c-MenuSidebar__channel"
             >
-              # {{ channelItem.title }}
+              <div class="c-MenuSidebar__hash">#</div>
+              {{ channelItem.title }}
             </div>
           </div>
         </div>
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
-            <v-fa :icon="getDirectMessageCaretIcon" />
+            <div class="c-MenuSidebar__icon">
+              <v-fa :icon="getDirectMessageCaretIcon" />
+            </div>
             <div class="c-MenuSidebar__text">Direct messages</div>
           </div>
           <div
@@ -74,6 +79,11 @@
               }"
               @click="selectDirectMessage(directMessageItem.id)"
             >
+              <img
+                role="img"
+                src="../assets/logo.png"
+                class="c-MenuSidebar__directMessageIcon"
+              />
               {{ directMessageItem.name }}
             </div>
           </div>
@@ -107,7 +117,7 @@ export default Vue.extend({
         { title: "All DMs", id: 12, icon: ["far", "comments"] },
         { title: "Mentions & reactions", id: 13, icon: "at" },
         { title: "Save items", id: 14, icon: ["far", "bookmark"] },
-        { title: "Channels", id: 15, icon: "ellipsis-v" },
+        { title: "More", id: 15, icon: "ellipsis-v" },
       ] as menuList[],
       channelList: [
         { title: "autify", id: 16 },
@@ -118,6 +128,20 @@ export default Vue.extend({
         { title: "dev-stg-ci-result", id: 21 },
         { title: "errors-app-stg", id: 22 },
         { title: "fulltime-employee", id: 23 },
+        { title: "idea", id: 24 },
+        { title: "incident", id: 25 },
+        { title: "intern", id: 26 },
+        { title: "landingpage", id: 27 },
+        { title: "lunch", id: 28 },
+        { title: "marketing", id: 29 },
+        { title: "partner-success", id: 30 },
+        { title: "product-management", id: 31 },
+        { title: "random", id: 32 },
+        { title: "random-dev", id: 33 },
+        { title: "recruiting", id: 34 },
+        { title: "schedule-sunny", id: 35 },
+        { title: "transifex-notification", id: 36 },
+        { title: "user-feedback", id: 37 },
       ] as channelList[],
       directMessageList: [] as string[],
       statusChannel: true as boolean,
@@ -216,6 +240,7 @@ export default Vue.extend({
   &__groupName {
     padding: 16px 44px 16px 16px;
     display: flex;
+    font-size: 18px;
   }
 
   &__angleDown {
@@ -226,8 +251,8 @@ export default Vue.extend({
   }
 
   &__newMessage {
-    min-width: 40px;
-    height: 40px;
+    min-width: 34px;
+    height: 34px;
     border-radius: 50%;
     background-color: #fff;
     color: #01242e;
@@ -241,6 +266,7 @@ export default Vue.extend({
   &__sideBarBody {
     overflow-y: auto;
     height: calc(100vh - 100px);
+    font-size: 15px;
 
     &--hide {
       overflow-y: hidden;
@@ -258,7 +284,7 @@ export default Vue.extend({
   }
 
   &__wrapSelectMenu {
-    padding: 16px 0;
+    padding-top: 16px;
     border-right: 1px solid rgb(26, 58, 67);
     border-left: 1px solid rgb(26, 58, 67);
     cursor: pointer;
@@ -267,13 +293,14 @@ export default Vue.extend({
   &__selectMenu {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    height: 28px;
     padding: 0 16px;
     &:hover {
       background-color: rgb(121, 4, 189);
     }
     &--isCurrent {
       color: #4ce7a8;
+      background-color: #013644;
     }
   }
 
@@ -292,51 +319,63 @@ export default Vue.extend({
   }
 
   &__section {
-    font-size: 16px;
-    padding: 16px 0;
     border-left: 1px solid rgb(26, 58, 67);
+    margin-top: 8px;
   }
 
   &__subTitle {
+    height: 36px;
     padding-left: 16px;
-    font-size: 18px;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
   &__channelList {
-    padding: 16px 0;
-    font-size: 18px;
     cursor: pointer;
   }
 
   &__channel {
-    margin-top: 8px;
+    height: 28px;
     padding-left: 29px;
+    display: flex;
+    align-items: center;
     &:hover {
       background-color: rgb(121, 4, 189);
     }
     &--isCurrent {
       color: #4ce7a8;
+      background-color: #013644;
     }
   }
 
+  &__hash {
+    width: 20px;
+    display: inline-block;
+  }
+
   &__directMessageList {
-    padding: 16px 0;
-    font-size: 18px;
     cursor: pointer;
   }
 
   &__directMessage {
-    margin-top: 8px;
+    height: 28px;
     padding-left: 29px;
+    display: flex;
+    align-items: center;
     &:hover {
       background-color: rgb(121, 4, 189);
     }
     &--isCurrent {
       color: #4ce7a8;
+      background-color: #013644;
     }
+  }
+
+  &__directMessageIcon {
+    min-width: 20px;
+    height: 20px;
+    margin-right: 8px;
   }
 }
 </style>

@@ -38,9 +38,13 @@
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showChannel">
             <div class="c-MenuSidebar__icon c-MenuSidebar__caret">
-              <transition>
-                <v-fa :icon="getChannelCaretIcon" />
-              </transition>
+              <v-fa
+                icon="caret-right"
+                :class="{
+                  'c-MenuSidebar__caret--rotatedShow': !statusChannel,
+                  'c-MenuSidebar__caret--rotatedClose': statusChannel,
+                }"
+              />
             </div>
             <div class="c-MenuSidebar__text">Channels</div>
           </div>
@@ -63,7 +67,13 @@
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
             <div class="c-MenuSidebar__icon c-MenuSidebar__caret">
-              <v-fa :icon="getDirectMessageCaretIcon" />
+              <v-fa
+                icon="caret-right"
+                :class="{
+                  'c-MenuSidebar__caret--rotatedShow': !statusDirectMessage,
+                  'c-MenuSidebar__caret--rotatedClose': statusDirectMessage,
+                }"
+              />
             </div>
             <div class="c-MenuSidebar__text">Direct messages</div>
           </div>
@@ -308,14 +318,21 @@ export default Vue.extend({
 
   &__icon {
     min-width: 18px;
-  }
-
-  &__caret {
     &:hover {
       background-color: rgba(209, 210, 211, 0.5);
       border-radius: 4px;
-      //transform: rotate(90deg);
-      //transition: 1s;
+    }
+  }
+
+  &__caret {
+    &--rotatedShow {
+      transform: rotate(90deg);
+      transition: 0.2s;
+    }
+
+    &--rotatedClose {
+      transform: rotate(0deg);
+      transition: 0.2s;
     }
   }
 

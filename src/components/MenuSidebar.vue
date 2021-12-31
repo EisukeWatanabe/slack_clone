@@ -34,6 +34,12 @@
             </div>
             <div class="c-MenuSidebar__text">{{ menuItem.title }}</div>
           </div>
+          <div class="c-MenuSidebar__selectMenu">
+            <div class="c-MenuSidebar__icon">
+              <v-fa icon="ellipsis-v" />
+            </div>
+            <div class="c-MenuSidebar__text">More</div>
+          </div>
         </div>
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showChannel">
@@ -61,6 +67,12 @@
             >
               <div class="c-MenuSidebar__hash">#</div>
               {{ channelItem.title }}
+            </div>
+            <div class="c-MenuSidebar__add">
+              <div class="c-MenuSidebar__plus">
+                <v-fa icon="plus" />
+              </div>
+              Add channels
             </div>
           </div>
         </div>
@@ -98,6 +110,12 @@
               />
               {{ directMessageItem.name }}
             </div>
+            <div class="c-MenuSidebar__add">
+              <div class="c-MenuSidebar__plus">
+                <v-fa icon="plus" />
+              </div>
+              Add teammates
+            </div>
           </div>
         </div>
       </div>
@@ -129,31 +147,30 @@ export default Vue.extend({
         { title: "All DMs", id: 12, icon: ["far", "comments"] },
         { title: "Mentions & reactions", id: 13, icon: "at" },
         { title: "Save items", id: 14, icon: ["far", "bookmark"] },
-        { title: "More", id: 15, icon: "ellipsis-v" },
       ] as menuList[],
       channelList: [
-        { title: "autify", id: 16 },
-        { title: "aws-chatbot-stg", id: 17 },
-        { title: "bug-report", id: 18 },
-        { title: "competitiors", id: 19 },
-        { title: "customer-support", id: 20 },
-        { title: "dev-stg-ci-result", id: 21 },
-        { title: "errors-app-stg", id: 22 },
-        { title: "fulltime-employee", id: 23 },
-        { title: "idea", id: 24 },
-        { title: "incident", id: 25 },
-        { title: "intern", id: 26 },
-        { title: "landingpage", id: 27 },
-        { title: "lunch", id: 28 },
-        { title: "marketing", id: 29 },
-        { title: "partner-success", id: 30 },
-        { title: "product-management", id: 31 },
-        { title: "random", id: 32 },
-        { title: "random-dev", id: 33 },
-        { title: "recruiting", id: 34 },
-        { title: "schedule-sunny", id: 35 },
-        { title: "transifex-notification", id: 36 },
-        { title: "user-feedback", id: 37 },
+        { title: "autify", id: 15 },
+        { title: "aws-chatbot-stg", id: 16 },
+        { title: "bug-report", id: 17 },
+        { title: "competitiors", id: 18 },
+        { title: "customer-support", id: 19 },
+        { title: "dev-stg-ci-result", id: 20 },
+        { title: "errors-app-stg", id: 21 },
+        { title: "fulltime-employee", id: 22 },
+        { title: "idea", id: 23 },
+        { title: "incident", id: 24 },
+        { title: "intern", id: 25 },
+        { title: "landingpage", id: 26 },
+        { title: "lunch", id: 27 },
+        { title: "marketing", id: 28 },
+        { title: "partner-success", id: 29 },
+        { title: "product-management", id: 30 },
+        { title: "random", id: 31 },
+        { title: "random-dev", id: 32 },
+        { title: "recruiting", id: 33 },
+        { title: "schedule-sunny", id: 34 },
+        { title: "transifex-notification", id: 35 },
+        { title: "user-feedback", id: 36 },
       ] as channelList[],
       directMessageList: [] as string[],
       statusChannel: true as boolean,
@@ -318,13 +335,13 @@ export default Vue.extend({
 
   &__icon {
     min-width: 18px;
+  }
+
+  &__caret {
     &:hover {
       background-color: rgba(209, 210, 211, 0.5);
       border-radius: 4px;
     }
-  }
-
-  &__caret {
     &--rotatedShow {
       transform: rotate(90deg);
       transition: 0.2s;
@@ -382,6 +399,28 @@ export default Vue.extend({
     display: inline-block;
   }
 
+  &__add {
+    height: 28px;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: rgb(121, 4, 189);
+    }
+  }
+
+  &__plus {
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    background-color: rgba(209, 210, 211, 0.2);
+    border-radius: 4px;
+  }
+
   &__directMessageList {
     cursor: pointer;
   }
@@ -401,8 +440,8 @@ export default Vue.extend({
   }
 
   &__directMessageIcon {
-    min-width: 20px;
-    height: 20px;
+    min-width: 12px;
+    height: 12px;
     margin-right: 8px;
   }
 }

@@ -37,8 +37,10 @@
         </div>
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showChannel">
-            <div class="c-MenuSidebar__icon">
-              <v-fa :icon="getChannelCaretIcon" />
+            <div class="c-MenuSidebar__icon c-MenuSidebar__caret">
+              <transition>
+                <v-fa :icon="getChannelCaretIcon" />
+              </transition>
             </div>
             <div class="c-MenuSidebar__text">Channels</div>
           </div>
@@ -60,7 +62,7 @@
         </div>
         <div class="c-MenuSidebar__section">
           <div class="c-MenuSidebar__subTitle" @click="showDirectMessage">
-            <div class="c-MenuSidebar__icon">
+            <div class="c-MenuSidebar__icon c-MenuSidebar__caret">
               <v-fa :icon="getDirectMessageCaretIcon" />
             </div>
             <div class="c-MenuSidebar__text">Direct messages</div>
@@ -160,14 +162,14 @@ export default Vue.extend({
       if (this.statusChannel) {
         return "caret-down";
       } else {
-        return "caret-up";
+        return "caret-right";
       }
     },
     getDirectMessageCaretIcon() {
       if (this.statusDirectMessage) {
         return "caret-down";
       } else {
-        return "caret-up";
+        return "caret-right";
       }
     },
   },
@@ -308,6 +310,15 @@ export default Vue.extend({
     min-width: 18px;
   }
 
+  &__caret {
+    &:hover {
+      background-color: rgba(209, 210, 211, 0.5);
+      border-radius: 4px;
+      //transform: rotate(90deg);
+      //transition: 1s;
+    }
+  }
+
   &__text {
     margin-left: 4px;
   }
@@ -350,7 +361,7 @@ export default Vue.extend({
   }
 
   &__hash {
-    width: 20px;
+    min-width: 20px;
     display: inline-block;
   }
 

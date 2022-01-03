@@ -1,13 +1,18 @@
 <template>
   <div class="c-MessageInput">
     <form action="" method="post" class="c-MessageInput__wrapTextArea">
-      <textarea-autosize
-        class="c-MessageInput__textArea"
-        placeholder="Message"
-        ref="myTextarea"
-        v-model="textMessage"
-        :max-height="400"
-      />
+      <div class="c-MessageInput__textArea">
+        <div></div>
+        <textarea-autosize
+          rows="1"
+          class="c-MessageInput__testAreaAutosize"
+          placeholder="Message"
+          ref="myTextarea"
+          v-model="textMessage"
+          :max-height="400"
+        />
+        <div></div>
+      </div>
       <button type="submit" class="c-MessageInput__button">
         <v-fa icon="paper-plane" />
       </button>
@@ -52,13 +57,21 @@ export default Vue.extend({
     width: 100%;
     color: #d1d2d3;
     background-color: #222629;
-    border: 1px solid #b6c3c6;
+    border: 1px solid #565856;
     border-radius: 4px;
+    display: grid;
+    grid-template-rows: 30px 1fr 30px;
   }
-}
 
-textarea {
-  background-color: red;
-  color: red;
+  &__testAreaAutosize {
+    color: #d1d2d3;
+    background-color: #222629;
+    border: none;
+    outline: none;
+    padding-left: 8px;
+    &::placeholder {
+      position: relative;
+    }
+  }
 }
 </style>

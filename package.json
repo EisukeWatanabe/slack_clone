@@ -14,6 +14,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.6",
     "core-js": "^3.6.5",
     "splitpanes": "^2.3.8",
+    "v-tooltip": "^3.0.0-beta.1",
     "vue": "^2.6.11",
     "vue-textarea-autosize": "^1.1.1"
   },

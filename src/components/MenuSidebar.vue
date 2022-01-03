@@ -68,12 +68,15 @@
               <div class="c-MenuSidebar__hash">#</div>
               {{ channelItem.title }}
             </div>
-            <div class="c-MenuSidebar__add">
-              <div class="c-MenuSidebar__plus">
-                <v-fa icon="plus" />
+            <VDropdown theme="addition">
+              <div class="c-MenuSidebar__add">
+                <div class="c-MenuSidebar__plus">
+                  <v-fa icon="plus" />
+                </div>
+                Add channels
               </div>
-              Add channels
-            </div>
+              <template #popper>aaaaa</template>
+            </VDropdown>
           </div>
         </div>
         <div class="c-MenuSidebar__section">
@@ -126,6 +129,18 @@
 <script lang="ts">
 import Vue from "vue";
 import ContentLayout from "@/components/ContentLayout.vue";
+import VTooltip from "v-tooltip";
+
+Vue.use(VTooltip, {
+  themes: {
+    addition: {
+      $resetCss: true,
+      triggers: ["click"],
+      autoHide: true,
+      placement: "bottom",
+    },
+  },
+});
 
 type menuList = {
   title: string;
@@ -249,7 +264,7 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .c-MenuSidebar {
   background-color: #01242e;
   text-align: left;
@@ -444,5 +459,14 @@ export default Vue.extend({
     height: 12px;
     margin-right: 8px;
   }
+}
+
+/* Style */
+.v-popper__inner {
+  background: #f51919;
+  color: #000000;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 </style>

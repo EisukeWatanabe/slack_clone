@@ -102,7 +102,7 @@
               <v-fa icon="paper-plane" />
             </button>
             <span class="c-MessageInput__separator"></span>
-            <div class="c-MessageInput__icon">
+            <div class="c-MessageInput__icon c-MessageInput__sendOption">
               <v-fa icon="caret-down" />
             </div>
           </div>
@@ -128,7 +128,8 @@ export default Vue.extend({
   },
   methods: {
     focusInput() {
-      this.$refs.myTextarea.$el.focus();
+      const myTextarea = this.$refs.myTextarea as any;
+      myTextarea.$el.focus();
     },
     isFocus() {
       this.changeOpacity = true;
@@ -214,6 +215,7 @@ export default Vue.extend({
     &--isFocus {
       color: rgba(232, 232, 232, 0.7);
     }
+
     :hover {
       color: rgba(232, 232, 232, 1);
       background-color: #2f3135;
@@ -227,8 +229,11 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     margin-left: auto;
-    margin-right: 8px;
-    color: #56595c;
+    margin-right: 12px;
+  }
+
+  &__sendOption {
+    pointer-events: none;
   }
 }
 </style>

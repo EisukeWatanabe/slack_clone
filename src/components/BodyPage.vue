@@ -22,7 +22,7 @@ export default Vue.extend({
 @import "src/assets/scss/import";
 
 .c-BodyPage {
-  background-color: #262626;
+  background-color: #1b1d21;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ export default Vue.extend({
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #262626;
+    background-color: #1b1d21;
     position: absolute;
     bottom: 20px;
   }

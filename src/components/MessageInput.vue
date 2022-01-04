@@ -1,36 +1,70 @@
 <template>
   <div class="c-MessageInput">
-    <form action="" method="post" class="c-MessageInput__wrapTextArea">
+    <form
+      action=""
+      method="post"
+      class="c-MessageInput__wrapTextArea"
+      @click="focusInput"
+      @focusin="isFocus"
+      @focusout="notFocus"
+    >
       <div class="c-MessageInput__textArea">
         <div class="c-MessageInput__container">
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="bold" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="italic" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="strikethrough" />
           </div>
           <span class="c-MessageInput__separator"></span>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="link" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="list-ol" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="list-ul" />
           </div>
           <span class="c-MessageInput__separator"></span>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="bars" />
           </div>
           <span class="c-MessageInput__separator"></span>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="code" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div
+            class="c-MessageInput__icon"
+            :class="{ 'c-MessageInput__icon--isFocus': changeOpacity }"
+          >
             <v-fa icon="terminal" />
           </div>
         </div>
@@ -43,24 +77,24 @@
           :max-height="400"
         />
         <div class="c-MessageInput__container">
-          <div class="c-MessageInput__icon">
+          <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="plus" />
           </div>
           <span class="c-MessageInput__separator"></span>
-          <div class="c-MessageInput__icon">
+          <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="video" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="microphone" />
           </div>
           <span class="c-MessageInput__separator"></span>
           <div class="c-MessageInput__icon">
             <v-fa :icon="['far', 'smile']" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="at" />
           </div>
-          <div class="c-MessageInput__icon">
+          <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="remove-format" />
           </div>
           <div class="c-MessageInput__sendMessage">
@@ -89,7 +123,19 @@ export default Vue.extend({
   data() {
     return {
       textMessage: "" as string,
+      changeOpacity: false,
     };
+  },
+  methods: {
+    focusInput() {
+      this.$refs.myTextarea.$el.focus();
+    },
+    isFocus() {
+      this.changeOpacity = true;
+    },
+    notFocus() {
+      this.changeOpacity = false;
+    },
   },
 });
 </script>
@@ -101,14 +147,18 @@ export default Vue.extend({
   &__button {
     border: none;
     background-color: #262626;
-    color: rgb(209, 210, 211);
+    color: #56595c;
   }
 
   &__wrapTextArea {
     left: -200px;
     display: flex;
-    width: 90%;
+    width: 96%;
     margin: 0 auto;
+
+    :focus-within {
+      border-color: rgb(209, 210, 211);
+    }
   }
 
   &__textArea {
@@ -128,7 +178,7 @@ export default Vue.extend({
     outline: none;
     padding-left: 8px;
     margin-top: 18px;
-    font-size: 15px;
+    font-size: 14px;
     &::placeholder {
       position: relative;
     }
@@ -136,9 +186,8 @@ export default Vue.extend({
 
   &__container {
     display: flex;
-    padding: 8px 4px;
-    color: #d1d2d3;
-    opacity: 0.3;
+    padding: 4px;
+    color: #56595c;
     font-size: 14px;
     height: 100%;
     align-items: center;
@@ -146,8 +195,8 @@ export default Vue.extend({
 
   &__separator {
     width: 1px;
-    background: #fff;
-    margin: 8px 4px 16px;
+    background: #56595c;
+    margin: 12px 4px 16px;
     height: 20px;
     flex-shrink: 0;
     align-self: center;
@@ -156,14 +205,30 @@ export default Vue.extend({
   &__icon {
     padding: 2px;
     margin: 2px;
-    width: 24px;
-    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 28px;
+    cursor: pointer;
+
+    &--isFocus {
+      color: rgba(232, 232, 232, 0.7);
+    }
+    :hover {
+      color: rgba(232, 232, 232, 1);
+      background-color: #2f3135;
+      border-radius: 4px;
+      padding: 6px;
+      width: 16px;
+    }
   }
 
   &__sendMessage {
     display: flex;
     align-items: center;
     margin-left: auto;
+    margin-right: 8px;
+    color: #56595c;
   }
 }
 </style>

@@ -67,7 +67,7 @@ body {
   .splitpanes--vertical > .splitpanes__splitter {
     width: 4px;
     opacity: 1;
-    background-color: #262626;
+    background-color: #1b1d21;
     border: #01242e;
 
     &:hover {

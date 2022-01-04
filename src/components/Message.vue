@@ -15,7 +15,7 @@ export default Vue.extend({
 
 .c-Message {
   height: calc(100vh - 122px);
-  background-color: #262626;
+  background-color: #1b1d21;
   width: 100%;
 }
 </style>

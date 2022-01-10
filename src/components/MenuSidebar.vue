@@ -68,15 +68,17 @@
               <div class="c-MenuSidebar__hash">#</div>
               {{ channelItem.title }}
             </div>
-            <VDropdown theme="addition">
-              <div class="c-MenuSidebar__add">
-                <div class="c-MenuSidebar__plus">
-                  <v-fa icon="plus" />
+            <div class="c-MenuSidebar__wrapAdd">
+              <VDropdown theme="add">
+                <div class="c-MenuSidebar__add">
+                  <div class="c-MenuSidebar__plus">
+                    <v-fa icon="plus" />
+                  </div>
+                  Add channels
                 </div>
-                Add channels
-              </div>
-              <template #popper>aaaaa</template>
-            </VDropdown>
+                <template #popper>aaaaa</template>
+              </VDropdown>
+            </div>
           </div>
         </div>
         <div class="c-MenuSidebar__section">
@@ -130,11 +132,11 @@
 import Vue from "vue";
 import ContentLayout from "@/components/ContentLayout.vue";
 import VTooltip from "v-tooltip";
+import "v-tooltip/dist/v-tooltip.css";
 
 Vue.use(VTooltip, {
   themes: {
-    addition: {
-      $resetCss: true,
+    add: {
       triggers: ["click"],
       autoHide: true,
       placement: "bottom",
@@ -417,14 +419,17 @@ export default Vue.extend({
     display: inline-block;
   }
 
+  &__wrapAdd {
+    &:hover {
+      background-color: rgb(121, 4, 189);
+    }
+  }
+
   &__add {
     height: 28px;
     padding-left: 24px;
     display: flex;
     align-items: center;
-    &:hover {
-      background-color: rgb(121, 4, 189);
-    }
   }
 
   &__plus {
@@ -465,11 +470,15 @@ export default Vue.extend({
 }
 
 /* Style */
-.v-popper__inner {
+.v-popper--theme-add .v-popper__inner {
   background: #f51919;
   color: #000000;
   padding: 16px;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.v-popper {
+  width: auto;
 }
 </style>

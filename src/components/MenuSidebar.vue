@@ -47,8 +47,8 @@
               <v-fa
                 icon="caret-right"
                 :class="{
-                  'c-MenuSidebar__caret--rotatedShow': !statusChannel,
-                  'c-MenuSidebar__caret--rotatedClose': statusChannel,
+                  'c-MenuSidebar__caret--rotatedShow': statusChannel,
+                  'c-MenuSidebar__caret--rotatedClose': !statusChannel,
                 }"
               />
             </div>
@@ -85,8 +85,8 @@
               <v-fa
                 icon="caret-right"
                 :class="{
-                  'c-MenuSidebar__caret--rotatedShow': !statusDirectMessage,
-                  'c-MenuSidebar__caret--rotatedClose': statusDirectMessage,
+                  'c-MenuSidebar__caret--rotatedShow': statusDirectMessage,
+                  'c-MenuSidebar__caret--rotatedClose': !statusDirectMessage,
                 }"
               />
             </div>
@@ -279,6 +279,9 @@ export default Vue.extend({
     border: 1px solid rgb(26, 58, 67);
     display: flex;
     cursor: pointer;
+    &:hover {
+      background-color: rgb(121, 4, 189);
+    }
   }
 
   &__groupName {

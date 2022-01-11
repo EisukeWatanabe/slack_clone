@@ -69,15 +69,20 @@
               {{ channelItem.title }}
             </div>
             <div class="c-MenuSidebar__wrapAdd">
-              <VDropdown theme="add">
+              <VMenu theme="add">
                 <div class="c-MenuSidebar__add">
                   <div class="c-MenuSidebar__plus">
                     <v-fa icon="plus" />
                   </div>
                   Add channels
                 </div>
-                <template #popper>aaaaa</template>
-              </VDropdown>
+                <template #popper>
+                  <div class="c-MenuSidebar__menuItem">
+                    Create a new channel
+                  </div>
+                  <div class="c-MenuSidebar__menuItem">Browse all channels</div>
+                </template>
+              </VMenu>
             </div>
           </div>
         </div>
@@ -115,12 +120,21 @@
               />
               {{ directMessageItem.name }}
             </div>
-            <div class="c-MenuSidebar__add">
-              <div class="c-MenuSidebar__plus">
-                <v-fa icon="plus" />
-              </div>
-              Add teammates
+            <div class="c-MenuSidebar__wrapAdd">
+              <VMenu theme="add">
+                <div class="c-MenuSidebar__add">
+                  <div class="c-MenuSidebar__plus">
+                    <v-fa icon="plus" />
+                  </div>
+                  Add teammates
+                </div>
+                <template #popper>
+                  <div class="c-MenuSidebar__menuItem">Invite people</div>
+                  <div class="c-MenuSidebar__menuItem">New conversation</div>
+                </template>
+              </VMenu>
             </div>
+            <div class="c-MenuSidebar__bottom"></div>
           </div>
         </div>
       </div>
@@ -139,6 +153,7 @@ Vue.use(VTooltip, {
     add: {
       triggers: ["click"],
       autoHide: true,
+      offset: [48, 6],
       placement: "bottom",
     },
   },
@@ -444,6 +459,16 @@ export default Vue.extend({
     border-radius: 4px;
   }
 
+  &__menuItem {
+    font-size: 15px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    padding: 0 16px;
+    line-height: 28px;
+    &:hover {
+      background-color: #046f9d;
+    }
+  }
+
   &__directMessageList {
     cursor: pointer;
   }
@@ -467,18 +492,27 @@ export default Vue.extend({
     height: 12px;
     margin-right: 8px;
   }
+
+  &__bottom {
+    height: 64px;
+  }
 }
 
 /* Style */
 .v-popper--theme-add .v-popper__inner {
-  background: #f51919;
-  color: #000000;
-  padding: 16px;
-  border-radius: 4px;
+  background: #232529;
+  border: 1px solid #1a3a43;
+  color: #bbbcbe;
+  padding: 16px 0;
+  border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .v-popper {
   width: auto;
+}
+
+.v-popper--theme-add .v-popper__arrow {
+  border-color: #02232e;
 }
 </style>

@@ -77,7 +77,7 @@
                   Add channels
                 </div>
                 <template #popper>
-                  <div class="c-MenuSidebar__menuItem">
+                  <div class="c-MenuSidebar__menuItem" @click="showAddModal">
                     Create a new channel
                   </div>
                   <div class="c-MenuSidebar__menuItem">Browse all channels</div>
@@ -147,6 +147,8 @@ import Vue from "vue";
 import ContentLayout from "@/components/ContentLayout.vue";
 import VTooltip from "v-tooltip";
 import "v-tooltip/dist/v-tooltip.css";
+import { showModal } from "@/assets/ts/lib/showModal.ts";
+import CreateAddChannelModal from "@/components/modal/CreateAddChannelModal.vue";
 
 Vue.use(VTooltip, {
   themes: {
@@ -240,6 +242,9 @@ export default Vue.extend({
       } else {
         console.log("error");
       }
+    },
+    showAddModal() {
+      showModal(this, CreateAddChannelModal, {}, { width: "600px" });
     },
     showChannel() {
       this.statusChannel = !this.statusChannel;

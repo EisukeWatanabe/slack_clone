@@ -44,7 +44,6 @@ export function showModal(
   scrollTop = getScrollingElement()?.scrollTop ?? 0;
 
   vueInstance.$modal.show(modalComponent, props, options, {
-    "before-close": (/* event: any */) => {},
     closed: () => {
       const scrollingElement = getScrollingElement();
       if (scrollingElement != null) {

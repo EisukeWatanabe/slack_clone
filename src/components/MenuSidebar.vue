@@ -244,7 +244,7 @@ export default Vue.extend({
       }
     },
     showAddModal() {
-      showModal(this, CreateAddChannelModal, {}, { width: "600px" });
+      showModal(this, CreateAddChannelModal, {}, { width: "520px" });
     },
     showChannel() {
       this.statusChannel = !this.statusChannel;

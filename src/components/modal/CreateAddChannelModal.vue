@@ -8,6 +8,24 @@
         Channels are where your team communicates. They’re best when organized
         around a topic — #marketing, for example.
       </div>
+      <div>
+        <form action="">
+          <label for="name" class="p-CreateAddChannelModal__label">Name</label>
+          <div>
+            <div class="p-CreateAddChannelModal__wrapNameInput">
+              <i class="p-CreateAddChannelModal__icon">#</i>
+              <div class="p-CreateAddChannelModal__nameInput">
+                <input
+                  type="text"
+                  id="name"
+                  ref="nameInput"
+                  class="p-CreateAddChannelModal__input"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +35,7 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "CreateAddChannelModal",
+  methods: {},
 });
 </script>
 
@@ -43,6 +62,45 @@ export default Vue.extend({
   &__description {
     color: #d1d2d3;
     font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    color: #d1d2d3;
+    font-size: 15px;
+  }
+
+  &__wrapNameInput {
+    margin-top: 4px;
+    background-color: #1b1d21;
+    display: flex;
+    border: 1px solid #525357;
+    padding: 8px 16px 8px 8px;
+    border-radius: 6px;
+    &:focus-within {
+      border: 3px solid deepskyblue;
+    }
+  }
+
+  &__icon {
+    color: #d1d2d3;
+  }
+
+  &__nameInput {
+    width: 100%;
+  }
+
+  &__input {
+    margin-left: 8px;
+    border: none;
+    background-color: #1b1d21;
+    color: #d1d2d3;
+    width: 100%;
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>

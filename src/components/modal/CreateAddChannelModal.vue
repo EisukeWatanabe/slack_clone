@@ -10,21 +10,70 @@
       </div>
       <div>
         <form action="">
-          <label for="name" class="p-CreateAddChannelModal__label">Name</label>
-          <div>
-            <div class="p-CreateAddChannelModal__wrapNameInput">
-              <i class="p-CreateAddChannelModal__icon">#</i>
-              <div class="p-CreateAddChannelModal__nameInput">
-                <input
-                  type="text"
-                  id="name"
-                  ref="nameInput"
-                  class="p-CreateAddChannelModal__input"
-                />
+          <div class="p-CreateAddChannelModal__name">
+            <label for="name" class="p-CreateAddChannelModal__label"
+              >Name</label
+            >
+            <div>
+              <div class="p-CreateAddChannelModal__wrapNameInput">
+                <i class="p-CreateAddChannelModal__icon">#</i>
+                <div class="p-CreateAddChannelModal__nameInput">
+                  <input
+                    type="text"
+                    id="name"
+                    ref="nameInput"
+                    class="p-CreateAddChannelModal__input"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </form>
+        <form action="">
+          <div class="p-CreateAddChannelModal__name">
+            <label for="description" class="p-CreateAddChannelModal__label"
+              >Description</label
+            ><span class="p-CreateAddChannelModal__optional">(optional)</span>
+            <div>
+              <div class="p-CreateAddChannelModal__wrapNameInput">
+                <i class="p-CreateAddChannelModal__icon">#</i>
+                <div class="p-CreateAddChannelModal__nameInput">
+                  <input
+                    type="text"
+                    id="description"
+                    ref="nameInput"
+                    class="p-CreateAddChannelModal__input"
+                  />
+                </div>
+              </div>
+              <div class="p-CreateAddChannelModal__inputBottom">
+                what's this channel about?
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="p-CreateAddChannelModal__wrapToggle">
+          <div>
+            <div class="p-CreateAddChannelModal__subTitle">Make private</div>
+            <div class="p-CreateAddChannelModal__description">
+              When a channel is set to private, it can only be<br />viewed or
+              joined by invitation.
+            </div>
+          </div>
+          <div class="p-CreateAddChannelModal__wrapToggleButton">
+            <label for="toggle">
+              <toggle-button
+                name="toggle"
+                class="p-CreateAddChannelModal__toggleButton"
+                :width="54"
+                :height="30"
+                :margin="5"
+                :labels="{ checked: '✔', unchecked: '' }"
+                :color="{ checked: '#007A5A', unchecked: '#1b1d21' }"
+              ></toggle-button>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,6 +81,9 @@
 
 <script lang="ts">
 import Vue from "vue";
+import ToggleButton from "vue-js-toggle-button";
+
+Vue.use(ToggleButton);
 
 export default Vue.extend({
   name: "CreateAddChannelModal",
@@ -60,25 +112,36 @@ export default Vue.extend({
   }
 
   &__description {
-    color: #d1d2d3;
+    color: #ababad;
     font-size: 15px;
-    margin-bottom: 24px;
+  }
+
+  &__name {
+    margin-top: 24px;
   }
 
   &__label {
     color: #d1d2d3;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  &__optional {
+    color: #ababad;
+    font-size: 14px;
+    margin-left: 4px;
   }
 
   &__wrapNameInput {
     margin-top: 4px;
     background-color: #1b1d21;
     display: flex;
-    border: 1px solid #525357;
+    border: 1px solid #808385;
     padding: 8px 16px 8px 8px;
     border-radius: 6px;
     &:focus-within {
-      border: 3px solid deepskyblue;
+      border: 1px solid deepskyblue;
+      box-shadow: 0 0 0 3px rgba(29, 155, 209, 0.3);
     }
   }
 
@@ -101,6 +164,39 @@ export default Vue.extend({
     &:focus {
       outline: none;
     }
+  }
+
+  &__inputBottom {
+    color: #ababad;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  &__toggleButton {
+    border: 1px solid #808385;
+    border-radius: 18px;
+
+    &:focus-within {
+      border: 1px solid deepskyblue;
+      box-shadow: 0 0 0 3px rgba(29, 155, 209, 0.3);
+      border-radius: 18px;
+    }
+  }
+
+  &__subTitle {
+    font-weight: bold;
+    color: #d1d2d3;
+  }
+
+  &__wrapToggle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  &__wrapToggleButton {
+    display: flex;
+    align-items: center;
   }
 }
 </style>

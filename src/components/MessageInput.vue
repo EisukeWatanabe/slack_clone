@@ -97,8 +97,15 @@
           <div class="c-MessageInput__icon c-MessageInput__icon--isFocus">
             <v-fa icon="remove-format" />
           </div>
-          <div class="c-MessageInput__sendMessage">
-            <button type="submit" class="c-MessageInput__button">
+          <div
+            class="c-MessageInput__sendMessage"
+            :class="{ 'send-color': changeButtonColor }"
+          >
+            <button
+              type="submit"
+              class="c-MessageInput__button"
+              :class="{ 'send-color': changeButtonColor }"
+            >
               <v-fa icon="paper-plane" />
             </button>
             <span class="c-MessageInput__separator"></span>
@@ -125,6 +132,11 @@ export default Vue.extend({
       textMessage: "" as string,
       changeOpacity: false,
     };
+  },
+  computed: {
+    changeButtonColor(): boolean {
+      return this.textMessage.length > 0;
+    },
   },
   methods: {
     focusInput() {
@@ -167,7 +179,7 @@ export default Vue.extend({
     color: #d1d2d3;
     background-color: #222629;
     border: 1px solid #565856;
-    border-radius: 12px;
+    border-radius: 8px;
     display: grid;
     grid-template-rows: 36px 1fr 44px;
   }
@@ -229,11 +241,19 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     margin-left: auto;
-    margin-right: 12px;
+    width: 56px;
+    height: 26px;
+    border-radius: 4px;
   }
 
   &__sendOption {
     pointer-events: none;
+    justify-content: flex-start;
+  }
+
+  .send-color {
+    background-color: #007a5a;
+    color: white;
   }
 }
 </style>

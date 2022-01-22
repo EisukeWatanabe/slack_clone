@@ -21,6 +21,7 @@
                   <input
                     type="text"
                     id="name"
+                    v-model="nameInputValue"
                     ref="nameInput"
                     class="p-CreateAddChannelModal__input"
                   />
@@ -76,6 +77,25 @@
         </div>
       </div>
     </div>
+    <div class="p-CreateAddChannelModal__footer">
+      <div class="p-CreateAddChannelModal__wrapFooterContent">
+        <label for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <span class="p-CreateAddChannelModal__inputText"
+            >Share outside SmartRound</span
+          >
+          <span class="p-CreateAddChannelModal__infoCircle"
+            ><v-fa icon="info-circle"
+          /></span>
+        </label>
+      </div>
+      <button
+        class="p-CreateAddChannelModal__nextButton"
+        :class="{ 'send-color': changeButtonColor }"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -87,6 +107,16 @@ Vue.use(ToggleButton);
 
 export default Vue.extend({
   name: "CreateAddChannelModal",
+  data() {
+    return {
+      nameInputValue: "" as string,
+    };
+  },
+  computed: {
+    changeButtonColor(): boolean {
+      return this.nameInputValue.length > 0;
+    },
+  },
   methods: {},
 });
 </script>
@@ -197,6 +227,46 @@ export default Vue.extend({
   &__wrapToggleButton {
     display: flex;
     align-items: center;
+  }
+
+  &__footer {
+    padding: 24px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__wrapFooterContent {
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__nextButton {
+    font-size: 15px;
+    height: 36px;
+    min-width: 80px;
+    padding: 0 12px 1px;
+    background-color: #35373b;
+    color: #ababad;
+    border-radius: 4px;
+    border: none;
+  }
+
+  &__inputText {
+    color: #ababad;
+    font-size: 15px;
+    margin-left: 4px;
+  }
+
+  &__infoCircle {
+    color: #d1d2d3;
+    margin-left: 8px;
+  }
+
+  .send-color {
+    background-color: #007a5a;
+    color: white;
   }
 }
 </style>

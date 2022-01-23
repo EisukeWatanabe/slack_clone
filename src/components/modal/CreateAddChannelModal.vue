@@ -21,10 +21,20 @@
                   <input
                     type="text"
                     id="name"
+                    placeholder="e.g.plan-budget"
+                    maxlength="80"
                     v-model="nameInputValue"
+                    @focus="onFocus"
+                    @blur="onBlur"
                     ref="nameInput"
                     class="p-CreateAddChannelModal__input"
                   />
+                  <div
+                    class="p-CreateAddChannelModal__numberLength"
+                    v-if="showNumber"
+                  >
+                    {{ 80 - nameInputValue.length }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,6 +120,8 @@ export default Vue.extend({
   data() {
     return {
       nameInputValue: "" as string,
+      remainingNumber: 80,
+      showNumber: false as boolean,
     };
   },
   computed: {
@@ -117,7 +129,14 @@ export default Vue.extend({
       return this.nameInputValue.length > 0;
     },
   },
-  methods: {},
+  methods: {
+    onFocus() {
+      this.showNumber = true;
+    },
+    onBlur() {
+      this.showNumber = false;
+    },
+  },
 });
 </script>
 
@@ -181,6 +200,10 @@ export default Vue.extend({
 
   &__nameInput {
     width: 100%;
+    display: flex;
+    input::placeholder {
+      color: #ababad;
+    }
   }
 
   &__input {
@@ -194,6 +217,10 @@ export default Vue.extend({
     &:focus {
       outline: none;
     }
+  }
+
+  &__numberLength {
+    color: #ababad;
   }
 
   &__inputBottom {

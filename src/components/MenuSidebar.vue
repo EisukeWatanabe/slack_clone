@@ -55,19 +55,24 @@
             <div class="c-MenuSidebar__text">Channels</div>
           </div>
           <div class="c-MenuSidebar__channelList" v-if="statusChannel">
-            <div
-              v-for="channelItem in channelList"
-              :key="channelItem.id"
-              :class="{
-                'c-MenuSidebar__channel--isCurrent':
-                  channelItem.id === selectedChannel,
-              }"
-              @click="selectChannel(channelItem.id)"
-              class="c-MenuSidebar__channel"
+            <router-link
+              :to="`/channels/${selectedChannel}`"
+              class="c-MenuSidebar__routerLink"
             >
-              <div class="c-MenuSidebar__hash">#</div>
-              {{ channelItem.title }}
-            </div>
+              <div
+                v-for="channelItem in channelList"
+                :key="channelItem.id"
+                :class="{
+                  'c-MenuSidebar__channel--isCurrent':
+                    channelItem.id === selectedChannel,
+                }"
+                @click="selectChannel(channelItem.id)"
+                class="c-MenuSidebar__channel"
+              >
+                <div class="c-MenuSidebar__hash">#</div>
+                {{ channelItem.title }}
+              </div>
+            </router-link>
             <div class="c-MenuSidebar__wrapAdd">
               <VMenu theme="add">
                 <div class="c-MenuSidebar__add">
@@ -185,10 +190,10 @@ export default Vue.extend({
       channelList: [
         { title: "autify", id: 15 },
         { title: "aws-chatbot-stg", id: 16 },
-        { title: "bug-report", id: 17 },
+        { title: "biz-dev", id: 17 },
         { title: "competitiors", id: 18 },
         { title: "customer-support", id: 19 },
-        { title: "dev-stg-ci-result", id: 20 },
+        { title: "development", id: 20 },
         { title: "errors-app-stg", id: 21 },
         { title: "fulltime-employee", id: 22 },
         { title: "idea", id: 23 },
@@ -420,11 +425,17 @@ export default Vue.extend({
     cursor: pointer;
   }
 
+  &__routerLink {
+    text-decoration: none;
+  }
+
   &__channel {
     height: 28px;
     padding-left: 29px;
     display: flex;
     align-items: center;
+    color: white;
+
     &:hover {
       background-color: rgb(121, 4, 189);
     }

@@ -15,15 +15,18 @@ export default {
 <style lang="scss" scoped>
 .p-DevelopmentChannel {
   &__header {
-    height: 48px;
-    margin-left: 16px;
-    padding: 16px;
+    padding: 14px 16px 14px 20px;
     display: flex;
+    align-items: center;
+    border-bottom: 1px solid #36373b;
   }
 
   &__text {
     font-size: 20px;
     font-weight: bold;
+    height: 30px;
+    display: flex;
+    align-items: center;
   }
 }
 </style>

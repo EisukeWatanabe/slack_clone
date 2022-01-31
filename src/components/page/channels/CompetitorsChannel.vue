@@ -1,7 +1,7 @@
 <template>
-  <div class="p-BizDevChannel">
-    <div class="p-BizDevChannel__header">
-      <div class="p-BizDevChannel__text"># biz-dev</div>
+  <div class="p-Competitors">
+    <div class="p-Competitors__header">
+      <div class="p-Competitors__text"># competitors</div>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.p-BizDevChannel {
+.p-Competitors {
   &__header {
     padding: 14px 16px 14px 20px;
     display: flex;

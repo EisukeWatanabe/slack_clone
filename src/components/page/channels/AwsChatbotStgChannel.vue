@@ -1,7 +1,7 @@
 <template>
-  <div class="p-BizDevChannel">
-    <div class="p-BizDevChannel__header">
-      <div class="p-BizDevChannel__text"># biz-dev</div>
+  <div class="p-AwsChatBotStgChannel">
+    <div class="p-AwsChatBotStgChannel__header">
+      <div class="p-AwsChatBotStgChannel__text"># aws-chat-bot-stg</div>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.p-BizDevChannel {
+.p-AwsChatBotStgChannel {
   &__header {
     padding: 14px 16px 14px 20px;
     display: flex;

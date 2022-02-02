@@ -1,12 +1,14 @@
 <template>
   <div class="p-AutifyChannel">
     <div class="p-AutifyChannel__header">
-      <div class="p-AutifyChannel__text"># autify</div>
-      <div class="p-AutifyChannel__icon">
-        <v-fa icon="chevron-down" />
+      <div class="p-AutifyChannel__wrapTextIcon">
+        <div class="p-AutifyChannel__text"># autify</div>
+        <div class="p-AutifyChannel__icon">
+          <v-fa icon="chevron-down" />
+        </div>
       </div>
       <p class="p-AutifyChannel__description">
-        Autifyの実行結果が通知される部屋
+        Room where the result of Autify execution is notified.
       </p>
     </div>
   </div>
@@ -19,10 +21,22 @@ export default {};
 <style lang="scss" scoped>
 .p-AutifyChannel {
   &__header {
-    padding: 14px 16px 14px 20px;
+    padding: 10px 16px 10px 14px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #36373b;
+  }
+
+  &__wrapTextIcon {
+    display: flex;
+    cursor: pointer;
+    padding: 4px;
+    margin-right: 16px;
+
+    &:hover {
+      background-color: #232529;
+      border-radius: 8px;
+    }
   }
 
   &__text {
@@ -32,17 +46,21 @@ export default {};
     display: flex;
     align-items: center;
     margin-right: 8px;
+    margin-left: 8px;
   }
 
   &__icon {
     font-size: 10px;
     display: flex;
     align-items: center;
-    margin-right: 16px;
+    width: 4px;
+    margin-right: 12px;
   }
 
   &__description {
     margin: 0;
+    color: #abacad;
+    cursor: pointer;
   }
 }
 </style>

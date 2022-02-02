@@ -11,11 +11,17 @@
         Room where the result of Autify execution is notified.
       </p>
     </div>
+    <message-list />
   </div>
 </template>
 
 <script lang="ts">
-export default {};
+import Vue from "vue";
+import MessageList from "@/components/MessageList.vue";
+
+export default Vue.extend({
+  components: { MessageList },
+});
 </script>
 
 <style lang="scss" scoped>

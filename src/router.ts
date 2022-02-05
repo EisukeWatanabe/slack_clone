@@ -13,6 +13,10 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes: [
     {
+      path: "/",
+      redirect: "/channels/15",
+    },
+    {
       path: "/channels/15",
       component: AutifyChannel,
     },

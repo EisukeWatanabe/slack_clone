@@ -11,7 +11,11 @@
         Room where the result of Autify execution is notified.
       </p>
     </div>
-    <message-list />
+    <message-list
+      :icon-image="setLogo"
+      sender-name="Autify"
+      :time-log="timeLog"
+    />
   </div>
 </template>
 
@@ -21,6 +25,14 @@ import MessageList from "@/components/MessageList.vue";
 
 export default Vue.extend({
   components: { MessageList },
+  computed: {
+    setLogo() {
+      return "autify.png";
+    },
+    timeLog() {
+      return "12:00 PM";
+    },
+  },
 });
 </script>
 

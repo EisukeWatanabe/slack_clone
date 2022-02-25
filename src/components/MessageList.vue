@@ -8,7 +8,7 @@
         {{ senderName
         }}<span class="c-MessageList__timeLog">{{ timeLog }}</span>
       </div>
-      <div class="c-MessageList__text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+      <div class="c-MessageList__text">{{ messageText }}</div>
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default Vue.extend({
     iconImage: { type: String, required: true },
     senderName: { type: String, required: true },
     timeLog: { type: String, required: true },
+    messageText: { type: String, default: "" },
   },
   methods: {
     loadImg() {

@@ -15,6 +15,7 @@
       :icon-image="setLogo"
       sender-name="Autify"
       :time-log="timeLog"
+      message-text="aaaaaaaa"
     />
   </div>
 </template>

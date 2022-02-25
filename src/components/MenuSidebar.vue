@@ -188,7 +188,7 @@ export default Vue.extend({
         { title: "Save items", id: 14, icon: ["far", "bookmark"] },
       ] as menuList[],
       channelList: [
-        { title: "autify", id: 15 },
+        { title: "autify", id: 15, messages: ["aaa"] },
         { title: "aws-chatbot-stg", id: 16 },
         { title: "biz-dev", id: 17 },
         { title: "competitiors", id: 18 },
@@ -224,19 +224,24 @@ export default Vue.extend({
     await this.getUserName();
   },
   computed: {
-    getChannelCaretIcon() {
+    getChannelCaretIcon(): string {
       if (this.statusChannel) {
         return "caret-down";
       } else {
         return "caret-right";
       }
     },
-    getDirectMessageCaretIcon() {
+    getDirectMessageCaretIcon(): string {
       if (this.statusDirectMessage) {
         return "caret-down";
       } else {
         return "caret-right";
       }
+    },
+    getSelectedChannelList(): channelList[] {
+      return this.channelList.filter((channel) => {
+        return channel.id === this.selectedChannel;
+      });
     },
   },
   methods: {

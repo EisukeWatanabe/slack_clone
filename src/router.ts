@@ -19,6 +19,7 @@ const router = new VueRouter({
     {
       path: "/channels/15",
       component: AutifyChannel,
+      props: true,
     },
     {
       path: "/channels/16",

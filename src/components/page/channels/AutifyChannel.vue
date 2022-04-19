@@ -11,12 +11,14 @@
         Room where the result of Autify execution is notified.
       </p>
     </div>
-    <message-list
-      :icon-image="setLogo"
-      sender-name="Autify"
-      :time-log="timeLog"
-      message-text="aaaaaaaa"
-    />
+    <div>
+      <message-list
+        :icon-image="setLogo"
+        sender-name="Autify"
+        :time-log="timeLog"
+        :message-text="message"
+      />
+    </div>
   </div>
 </template>
 
@@ -26,12 +28,31 @@ import MessageList from "@/components/MessageList.vue";
 
 export default Vue.extend({
   components: { MessageList },
+  data() {
+    return {
+      message: "",
+    };
+  },
+  props: {
+    lists: Object,
+  },
   computed: {
     setLogo() {
       return "autify.png";
     },
     timeLog() {
       return "12:00 PM";
+    },
+    // textMessage() {
+    //   return JSON.parse(localStorage.getItem("autify"));
+    // },
+  },
+  mounted() {
+    if (localStorage.autify) this.message = localStorage.autify;
+  },
+  watch: {
+    message(val) {
+      this.message = val;
     },
   },
 });

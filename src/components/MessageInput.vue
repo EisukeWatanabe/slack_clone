@@ -102,8 +102,9 @@
             :class="{ 'send-color': changeButtonColor }"
           >
             <button
-              type="submit"
+              type="button"
               class="c-MessageInput__button"
+              @click="setMessage()"
               :class="{ 'send-color': changeButtonColor }"
             >
               <v-fa icon="paper-plane" />
@@ -149,6 +150,10 @@ export default Vue.extend({
     notFocus() {
       this.changeOpacity = false;
     },
+    setMessage() {
+      localStorage.setItem("autify", JSON.stringify(this.textMessage));
+      if (localStorage.autify) this.textMessage = "";
+    },
   },
 });
 </script>
@@ -161,6 +166,7 @@ export default Vue.extend({
     border: none;
     background-color: #262626;
     color: #56595c;
+    cursor: pointer;
   }
 
   &__wrapTextArea {
